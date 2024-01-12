@@ -284,9 +284,9 @@ html {
       color: #444;
       margin-top: -40px; }
   .home-screen .logo img {
-    margin-top: 13px;
-    max-width: 250px; }
-    @media screen and (max-width: 767px) {
+    margin-top: 20px;
+    max-width: 100px; }
+    @media screen and (max-width: 567px) {
       .home-screen .logo img {
         margin-top: 4px; } }
   .home-screen .logo .logo-gry {
