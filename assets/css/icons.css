@@ -1,0 +1,16 @@
+.icon {
+    display: block;
+    width: 1.35rem;
+    height: 1.35rem;
+    flex-shrink: 0;
+}
+
+.icon-lg {
+    width: 1.65rem;
+    height: 1.65rem;
+}
+
+.icon-xl {
+    width: 2rem;
+    height: 2rem;
+}
