@@ -4,7 +4,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const NOTIFY_EMAIL = Deno.env.get("NOTIFY_EMAIL") ?? "bgpsandaruwan@gmail.com";
 const FROM_EMAIL =
     Deno.env.get("RESEND_FROM") ?? "Pasindu Bandarigoda Website <onboarding@resend.dev>";
-const ADMIN_URL = Deno.env.get("ADMIN_URL") ?? "https://pasindu-bandarigoda.info/admin.html";
+const ADMIN_URL = Deno.env.get("ADMIN_URL") ?? "https://www.pasindubandarigoda.com/root-pasblk-admin.html";
 
 const corsHeaders = {
     "Access-Control-Allow-Origin": "*",
@@ -45,7 +45,7 @@ Deno.serve(async (req: Request) => {
         const html = `
             <p>You have a new consultation inquiry on your website.</p>
             <p><strong>${name}</strong> submitted the contact form.</p>
-            <p>Open your admin dashboard to read the full message and details:</p>
+            <p>Open your private dashboard to read the full message and details:</p>
             <p><a href="${ADMIN_URL}">${ADMIN_URL}</a></p>
             <p style="color:#666;font-size:14px;">This is a notification only. Inquiry details are stored securely in your dashboard.</p>
         `;

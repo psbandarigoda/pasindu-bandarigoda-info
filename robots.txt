@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Disallow: /admin.html
+Disallow: /root-pasblk-admin.html
 Disallow: /assets/js/config.js
 
-Sitemap: https://pasindu-bandarigoda.info/sitemap.xml
+Sitemap: https://www.pasindubandarigoda.com/sitemap.xml
