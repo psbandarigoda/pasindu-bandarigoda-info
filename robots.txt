@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin.html
+Disallow: /assets/js/config.js
+
+Sitemap: https://pasindu-bandarigoda.info/sitemap.xml
