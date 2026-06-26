@@ -140,6 +140,20 @@ const submitLead = async (event) => {
             throw new Error("Submission failed");
         }
 
+        const emailResponse = await fetch(`${config.supabaseUrl}/functions/v1/send-lead-email`, {
+            method: "POST",
+            headers: {
+                apikey: config.supabaseAnonKey,
+                Authorization: `Bearer ${config.supabaseAnonKey}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!emailResponse.ok) {
+            console.error("Lead saved but email notification failed.");
+        }
+
         leadForm.reset();
         setFormStatus("Thank you - your message has been received. I will respond within 48 hours.", "is-success");
     } catch {
