@@ -1,6 +1,18 @@
 const OWNER_EMAIL = "bgpsandaruwan@gmail.com";
 
 const config = window.SITE_CONFIG || {};
+
+const getAuthRedirectUrl = () => {
+    if (config.adminRedirectUrl) {
+        return config.adminRedirectUrl;
+    }
+
+    if (config.siteUrl) {
+        return `${config.siteUrl.replace(/\/$/, "")}/root-pasblk-admin.html`;
+    }
+
+    return window.location.origin + window.location.pathname;
+};
 const loginSection = document.querySelector("#admin-login");
 const dashboardSection = document.querySelector("#admin-dashboard");
 const loginForm = document.querySelector("#login-form");
@@ -29,7 +41,7 @@ const setLoginStatus = (message, type = "") => {
 
 const formatDate = (value) => {
     if (!value) {
-        return "—";
+        return "-";
     }
 
     return new Intl.DateTimeFormat("en-GB", {
@@ -115,11 +127,11 @@ const renderLeads = (leads) => {
                 </div>
                 <div>
                     <span class="admin-field-label">Organization</span>
-                    <div class="admin-field-value">${escapeHtml(lead.organization || "—")}</div>
+                    <div class="admin-field-value">${escapeHtml(lead.organization || "-")}</div>
                 </div>
                 <div>
                     <span class="admin-field-label">Region</span>
-                    <div class="admin-field-value">${escapeHtml(lead.region || "—")}</div>
+                    <div class="admin-field-value">${escapeHtml(lead.region || "-")}</div>
                 </div>
                 <div>
                     <span class="admin-field-label">Inquiry type</span>
@@ -188,7 +200,7 @@ const handleLogin = async (event) => {
     const { error } = await supabaseClient.auth.signInWithOtp({
         email,
         options: {
-            emailRedirectTo: window.location.href,
+            emailRedirectTo: getAuthRedirectUrl(),
         },
     });
 

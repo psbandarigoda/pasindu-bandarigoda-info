@@ -4,10 +4,10 @@ const navToggle = document.querySelector(".nav-toggle");
 const navLinks = [...document.querySelectorAll(".site-nav a[href^='#']")];
 const sections = [...document.querySelectorAll("main section[id]")];
 const revealNodes = [...document.querySelectorAll("[data-reveal]")];
-const capabilityQuote = document.querySelector(".capability-quote p");
 const leadForm = document.querySelector("#lead-form");
 const formStatus = document.querySelector("#form-status");
 const backToTop = document.querySelector("#back-to-top");
+const themeToggle = document.querySelector("#theme-toggle");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const setHeaderState = () => {
@@ -62,17 +62,31 @@ const scrollToTop = () => {
     });
 };
 
+const getTheme = () => document.documentElement.getAttribute("data-theme") || "light";
+
+const setTheme = (theme) => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    if (themeToggle) {
+        themeToggle.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+    }
+};
+
+const toggleTheme = () => {
+    setTheme(getTheme() === "dark" ? "light" : "dark");
+};
+
+if (themeToggle) {
+    setTheme(getTheme());
+    themeToggle.addEventListener("click", toggleTheme);
+}
+
 if (navToggle && nav) {
     navToggle.addEventListener("click", () => {
         const expanded = navToggle.getAttribute("aria-expanded") === "true";
         navToggle.setAttribute("aria-expanded", String(!expanded));
         nav.classList.toggle("is-open", !expanded);
     });
-}
-
-if (capabilityQuote) {
-    capabilityQuote.textContent =
-        "Business owners need advisors who understand cost, delivery, and risk. I consult from that perspective because I engineer systems, implement AI, and build companies myself.";
 }
 
 const setFormStatus = (message, type = "") => {
@@ -115,14 +129,14 @@ const submitLead = async (event) => {
     };
 
     if (!payload.name || !payload.email || !payload.region || !payload.inquiry_type || !payload.message) {
-        setFormStatus("Please fill in all required fields.", "is-error");
+        setFormStatus("Please complete all required fields.", "is-error");
         return;
     }
 
     if (submitButton) {
         submitButton.disabled = true;
     }
-    setFormStatus("Sending your message...", "is-loading");
+    setFormStatus("Submitting your request...", "is-loading");
 
     try {
         const response = await fetch(`${config.supabaseUrl}/rest/v1/leads`, {
@@ -137,27 +151,48 @@ const submitLead = async (event) => {
         });
 
         if (!response.ok) {
-            throw new Error("Submission failed");
+            let errorMessage = "Something went wrong. Please email bgpsandaruwan@gmail.com directly.";
+
+            try {
+                const errorBody = await response.json();
+                if (errorBody.code === "PGRST205") {
+                    errorMessage =
+                        "The inquiry database is not set up yet. Please email bgpsandaruwan@gmail.com directly for now.";
+                } else if (response.status === 401 || response.status === 403) {
+                    errorMessage = "Authentication error. Please email bgpsandaruwan@gmail.com directly.";
+                } else if (errorBody.message) {
+                    console.error("Lead submission failed:", errorBody);
+                }
+            } catch {
+                console.error("Lead submission failed with status:", response.status);
+            }
+
+            setFormStatus(errorMessage, "is-error");
+            return;
         }
 
-        const emailResponse = await fetch(`${config.supabaseUrl}/functions/v1/send-lead-email`, {
-            method: "POST",
-            headers: {
-                apikey: config.supabaseAnonKey,
-                Authorization: `Bearer ${config.supabaseAnonKey}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        });
+        try {
+            const emailResponse = await fetch(`${config.supabaseUrl}/functions/v1/send-lead-email`, {
+                method: "POST",
+                headers: {
+                    apikey: config.supabaseAnonKey,
+                    Authorization: `Bearer ${config.supabaseAnonKey}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload),
+            });
 
-        if (!emailResponse.ok) {
+            if (!emailResponse.ok) {
+                console.error("Lead saved but email notification failed.");
+            }
+        } catch {
             console.error("Lead saved but email notification failed.");
         }
 
         leadForm.reset();
-        setFormStatus("Thank you - your message has been received. I will respond within 48 hours.", "is-success");
+        setFormStatus("Thank you. Your consultation request has been received. I will respond within 48 hours.", "is-success");
     } catch {
-        setFormStatus("Something went wrong. Please email bgpsandaruwan@gmail.com directly.", "is-error");
+        setFormStatus("Network error. Please check your connection or email bgpsandaruwan@gmail.com directly.", "is-error");
     } finally {
         if (submitButton) {
             submitButton.disabled = false;
@@ -188,7 +223,7 @@ window.addEventListener(
 );
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 860) {
+    if (window.innerWidth > 960) {
         closeNav();
     }
 });
@@ -206,8 +241,8 @@ if (!reduceMotion && "IntersectionObserver" in window) {
             });
         },
         {
-            threshold: 0.18,
-            rootMargin: "0px 0px -8% 0px",
+            threshold: 0.12,
+            rootMargin: "0px 0px -6% 0px",
         }
     );
 

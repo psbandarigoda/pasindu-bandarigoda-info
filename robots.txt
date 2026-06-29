@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /insights/
 
 Disallow: /root-pasblk-admin.html
 Disallow: /assets/js/config.js

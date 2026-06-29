@@ -1,4 +1,5 @@
--- Run this in Supabase Dashboard → SQL Editor (new project: pcmroizonkdqyebsdciv)
+-- Run in Supabase Dashboard → SQL Editor for project pcmroizonkdqyebsdciv
+-- https://supabase.com/dashboard/project/pcmroizonkdqyebsdciv/sql/new
 
 create table if not exists public.leads (
     id uuid primary key default gen_random_uuid(),
@@ -16,18 +17,21 @@ create table if not exists public.leads (
 
 alter table public.leads enable row level security;
 
+drop policy if exists "Allow anonymous lead inserts" on public.leads;
 create policy "Allow anonymous lead inserts"
     on public.leads
     for insert
-    to anon
+    to anon, authenticated
     with check (true);
 
+drop policy if exists "Owner can read leads" on public.leads;
 create policy "Owner can read leads"
     on public.leads
     for select
     to authenticated
     using (lower(auth.jwt() ->> 'email') = 'bgpsandaruwan@gmail.com');
 
+drop policy if exists "Owner can update leads" on public.leads;
 create policy "Owner can update leads"
     on public.leads
     for update
@@ -35,4 +39,11 @@ create policy "Owner can update leads"
     using (lower(auth.jwt() ->> 'email') = 'bgpsandaruwan@gmail.com')
     with check (lower(auth.jwt() ->> 'email') = 'bgpsandaruwan@gmail.com');
 
+grant usage on schema public to anon, authenticated;
+grant insert on public.leads to anon;
+grant select, update on public.leads to authenticated;
+
 create index if not exists leads_created_at_idx on public.leads (created_at desc);
+
+-- Reload PostgREST schema cache
+notify pgrst, 'reload schema';

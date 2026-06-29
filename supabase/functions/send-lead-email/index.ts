@@ -59,7 +59,7 @@ Deno.serve(async (req: Request) => {
             body: JSON.stringify({
                 from: FROM_EMAIL,
                 to: [NOTIFY_EMAIL],
-                subject: "New website inquiry — open your dashboard",
+                subject: "New website inquiry - open your dashboard",
                 html,
             }),
         });
