@@ -177,7 +177,7 @@ export function AdminDashboard({ initialAuthenticated }: AdminDashboardProps) {
                                 </div>
                                 <div>
                                     <span className="admin-field-label">Organization</span>
-                                    <div className="admin-field-value">{lead.organization || "—"}</div>
+                                    <div className="admin-field-value">{lead.organization || "-"}</div>
                                 </div>
                                 <div>
                                     <span className="admin-field-label">Region</span>

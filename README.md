@@ -1,13 +1,13 @@
-# Pasindu Bandarigoda — Technology Strategy Advisor
+# Pasindu Bandarigoda - Technology Strategy Advisor
 
 Next.js site for [pasindubandarigoda.com](https://www.pasindubandarigoda.com).
 
 ## Stack
 
 - **Next.js 15** (App Router, TypeScript)
-- **Resend** — email notifications when someone submits the contact form
-- **JSON file storage** — consultation inquiries saved to `data/leads.json`
-- **Password-protected admin** — view and manage leads at `/admin`
+- **Resend** - email notifications when someone submits the contact form
+- **JSON file storage** - consultation inquiries saved to `data/leads.json`
+- **Password-protected admin** - view and manage leads at `/admin`
 
 ## Setup
 
@@ -36,4 +36,4 @@ Admin login at `/admin` uses a fixed username and password in `lib/auth.ts`.
 
 Works on Vercel, Railway, Render, or any Node.js host.
 
-**Note:** On serverless platforms (e.g. Vercel), the filesystem is ephemeral — use a persistent volume or mount `data/leads.json` via your host, or switch to a hosted database later.
+**Note:** On serverless platforms (e.g. Vercel), the filesystem is ephemeral - use a persistent volume or mount `data/leads.json` via your host, or switch to a hosted database later.

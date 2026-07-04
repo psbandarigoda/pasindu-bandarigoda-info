@@ -18,7 +18,7 @@ function getResend() {
 export async function sendLeadNotification(lead: Lead) {
     const client = getResend();
     if (!client) {
-        console.warn("RESEND_API_KEY not set — skipping email notification");
+        console.warn("RESEND_API_KEY not set - skipping email notification");
         return { ok: false as const, skipped: true };
     }
 
@@ -31,7 +31,7 @@ export async function sendLeadNotification(lead: Lead) {
         <p><strong>${escapeHtml(lead.name)}</strong> submitted the contact form on your website.</p>
         <table style="border-collapse:collapse;width:100%;max-width:560px;">
             <tr><td style="padding:6px 0;color:#666;">Email</td><td>${escapeHtml(lead.email)}</td></tr>
-            <tr><td style="padding:6px 0;color:#666;">Organization</td><td>${escapeHtml(lead.organization ?? "—")}</td></tr>
+            <tr><td style="padding:6px 0;color:#666;">Organization</td><td>${escapeHtml(lead.organization ?? "-")}</td></tr>
             <tr><td style="padding:6px 0;color:#666;">Region</td><td>${escapeHtml(lead.region)}</td></tr>
             <tr><td style="padding:6px 0;color:#666;">Engagement</td><td>${escapeHtml(lead.inquiry_type)}</td></tr>
             <tr><td style="padding:6px 0;color:#666;">Newsletter</td><td>${lead.newsletter_opt_in ? "Yes" : "No"}</td></tr>
