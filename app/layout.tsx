@@ -39,6 +39,10 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         images: [PROFILE_IMAGE],
     },
+    icons: {
+        icon: [{ url: PROFILE_IMAGE, type: "image/png" }],
+        apple: [{ url: PROFILE_IMAGE, type: "image/png" }],
+    },
 };
 
 const jsonLd = {
