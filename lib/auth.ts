@@ -1,20 +1,19 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { OWNER_EMAIL } from "./site";
 
 const COOKIE_NAME = "admin_session";
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
+const ADMIN_USERNAME = "root";
+const ADMIN_PASSWORD = "PS#root";
+
 function getSecret() {
-    const secret = process.env.AUTH_SECRET;
-    if (!secret) {
-        throw new Error("AUTH_SECRET is not configured");
-    }
+    const secret = process.env.AUTH_SECRET ?? "pasindu-admin-session-secret";
     return new TextEncoder().encode(secret);
 }
 
-export async function createSessionToken() {
-    return new SignJWT({ email: OWNER_EMAIL, role: "admin" })
+export async function createSessionToken(username: string) {
+    return new SignJWT({ username, role: "admin" })
         .setProtectedHeader({ alg: "HS256" })
         .setIssuedAt()
         .setExpirationTime(`${SESSION_MAX_AGE}s`)
@@ -24,7 +23,7 @@ export async function createSessionToken() {
 export async function verifySessionToken(token: string) {
     try {
         const { payload } = await jwtVerify(token, getSecret());
-        if (payload.email !== OWNER_EMAIL || payload.role !== "admin") {
+        if (payload.username !== ADMIN_USERNAME || payload.role !== "admin") {
             return false;
         }
         return true;
@@ -33,16 +32,12 @@ export async function verifySessionToken(token: string) {
     }
 }
 
-export function verifyAdminPassword(password: string) {
-    const expected = process.env.ADMIN_PASSWORD;
-    if (!expected) {
-        throw new Error("ADMIN_PASSWORD is not configured");
-    }
-    return password === expected;
+export function verifyAdminCredentials(username: string, password: string) {
+    return username === ADMIN_USERNAME && password === ADMIN_PASSWORD;
 }
 
 export async function setSessionCookie() {
-    const token = await createSessionToken();
+    const token = await createSessionToken(ADMIN_USERNAME);
     const cookieStore = await cookies();
     cookieStore.set(COOKIE_NAME, token, {
         httpOnly: true,

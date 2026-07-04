@@ -13,7 +13,7 @@ Next.js site for [pasindubandarigoda.com](https://www.pasindubandarigoda.com).
 
 ```bash
 cp .env.example .env.local
-# Edit .env.local with your Resend API key, admin password, and auth secret
+# Edit .env.local with your Resend API key
 
 npm install
 npm run dev
@@ -28,9 +28,9 @@ Open [http://localhost:3030](http://localhost:3030). Admin dashboard: [http://lo
 | `RESEND_API_KEY` | Resend API key for inquiry emails |
 | `RESEND_FROM` | Verified sender address in Resend |
 | `NOTIFY_EMAIL` | Where inquiry notifications are sent |
-| `ADMIN_PASSWORD` | Password for `/admin` login |
-| `AUTH_SECRET` | Random string for session cookies (32+ chars) |
 | `NEXT_PUBLIC_SITE_URL` | Production URL for emails and SEO |
+
+Admin login at `/admin` uses a fixed username and password in `lib/auth.ts`.
 
 ## Deploy
 

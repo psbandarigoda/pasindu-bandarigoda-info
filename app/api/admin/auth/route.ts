@@ -1,15 +1,16 @@
 import { NextResponse } from "next/server";
-import { isAuthenticated, setSessionCookie, verifyAdminPassword } from "@/lib/auth";
+import { isAuthenticated, setSessionCookie, verifyAdminCredentials } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
     try {
         const body = await request.json();
+        const username = String(body.username ?? "").trim();
         const password = String(body.password ?? "");
 
-        if (!password || !verifyAdminPassword(password)) {
-            return NextResponse.json({ error: "Invalid password" }, { status: 401 });
+        if (!verifyAdminCredentials(username, password)) {
+            return NextResponse.json({ error: "Invalid username or password" }, { status: 401 });
         }
 
         await setSessionCookie();

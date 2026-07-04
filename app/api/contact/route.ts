@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { insertLead } from "@/lib/db";
+import { insertLead, createLead } from "@/lib/db";
 import { sendLeadNotification } from "@/lib/resend";
 import type { LeadInput } from "@/lib/types";
 
@@ -47,15 +47,31 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
         }
 
-        const lead = insertLead(input);
+        let lead = createLead(input);
+        let saved = false;
 
         try {
-            await sendLeadNotification(lead);
-        } catch (emailError) {
-            console.error("Email notification failed:", emailError);
+            lead = await insertLead(input);
+            saved = true;
+        } catch (storageError) {
+            console.error("Lead storage failed:", storageError);
         }
 
-        return NextResponse.json({ ok: true, id: lead.id });
+        const emailResult = await sendLeadNotification(lead);
+        const emailed = emailResult.ok === true;
+
+        if (emailResult.error) {
+            console.error("Resend error:", emailResult.error);
+        }
+
+        if (saved || emailed) {
+            return NextResponse.json({ ok: true, id: lead.id, emailed, saved });
+        }
+
+        return NextResponse.json(
+            { error: "Could not save inquiry or send notification. Check server configuration." },
+            { status: 503 }
+        );
     } catch (error) {
         console.error("Contact form error:", error);
         return NextResponse.json({ error: "Server error" }, { status: 500 });

@@ -9,7 +9,7 @@ export async function GET() {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const leads = listLeads();
+    const leads = await listLeads();
     return NextResponse.json({ leads });
 }
 
@@ -26,7 +26,7 @@ export async function PATCH(request: Request) {
         return NextResponse.json({ error: "Missing id" }, { status: 400 });
     }
 
-    const updated = updateLeadStatus(id, status);
+    const updated = await updateLeadStatus(id, status);
     if (!updated) {
         return NextResponse.json({ error: "Not found" }, { status: 404 });
     }

@@ -9,6 +9,7 @@ type AdminDashboardProps = {
 
 export function AdminDashboard({ initialAuthenticated }: AdminDashboardProps) {
     const [authenticated, setAuthenticated] = useState(initialAuthenticated);
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginStatus, setLoginStatus] = useState("");
     const [loginError, setLoginError] = useState(false);
@@ -44,17 +45,18 @@ export function AdminDashboard({ initialAuthenticated }: AdminDashboardProps) {
         const response = await fetch("/api/admin/auth", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password }),
+            body: JSON.stringify({ username, password }),
         });
 
         if (!response.ok) {
-            setLoginStatus("Invalid password.");
+            setLoginStatus("Invalid username or password.");
             setLoginError(true);
             return;
         }
 
         setAuthenticated(true);
         setLoginStatus("");
+        setUsername("");
         setPassword("");
     };
 
@@ -86,9 +88,18 @@ export function AdminDashboard({ initialAuthenticated }: AdminDashboardProps) {
                 <div className="admin-login-card">
                     <p className="admin-kicker">Private dashboard</p>
                     <h1>Consultation inquiries</h1>
-                    <p className="admin-copy">Sign in with your admin password to view messages from your website contact form.</p>
+                    <p className="admin-copy">Sign in to view messages from your website contact form.</p>
                     <form className="admin-form" onSubmit={handleLogin}>
-                        <label htmlFor="login-password">Admin password</label>
+                        <label htmlFor="login-username">Username</label>
+                        <input
+                            type="text"
+                            id="login-username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                            autoComplete="username"
+                        />
+                        <label htmlFor="login-password">Password</label>
                         <input
                             type="password"
                             id="login-password"
