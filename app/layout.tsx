@@ -106,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             </head>
-            <body className={`${inter.variable} ${cormorant.variable}`}>
+            <body className={`${inter.variable} ${cormorant.variable}`} suppressHydrationWarning>
                 <ThemeProvider>
                     {children}
                     <BackToTop />

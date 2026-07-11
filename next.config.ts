@@ -4,6 +4,16 @@ const nextConfig: NextConfig = {
     images: {
         remotePatterns: [],
     },
+    webpack: (config, { dev }) => {
+        if (dev) {
+            config.cache = false;
+            config.watchOptions = {
+                ...config.watchOptions,
+                aggregateTimeout: 300,
+            };
+        }
+        return config;
+    },
     async redirects() {
         return [
             {

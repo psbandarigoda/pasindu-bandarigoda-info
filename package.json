@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3030",
+    "dev": "node scripts/clean-dev.js && next dev -p 3030",
+    "dev:fast": "next dev -p 3030",
+    "dev:clean": "node scripts/clean-dev.js && next dev -p 3030",
     "build": "next build",
     "start": "next start -p 3030",
     "lint": "next lint"

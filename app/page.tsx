@@ -10,7 +10,7 @@ import { LINKEDIN_URL, OWNER_EMAIL, PROFILE_IMAGE, SITE_URL, TOPMATE_URL } from 
 export const metadata: Metadata = {
     title: "Pasindu Bandarigoda | Technology Strategy Advisor",
     description:
-        "Pasindu Bandarigoda helps leadership teams solve complex business challenges through technology, AI, and strategic systems thinking - aligning investment with operational excellence and long-term value.",
+        "Pasindu Bandarigoda helps leadership teams solve complex business challenges through technology, AI, and strategic systems thinking.",
     alternates: { canonical: SITE_URL },
     openGraph: {
         title: "Pasindu Bandarigoda | Technology Strategy Advisor",
@@ -37,7 +37,7 @@ export default function HomePage() {
                                 I help organizations solve complex business challenges through technology, AI, and strategic systems thinking.
                             </h1>
                             <p className="hero-lead">
-                                I advise leadership teams when technology investment must produce measurable results - operational excellence, sustainable growth, and long-term competitive advantage. Technology is the enabler. The business outcome is the objective.
+                                I advise leadership teams when technology investment must produce measurable results - operational excellence, sustainable growth, and long-term competitive advantage.
                             </p>
                             <div className="hero-actions">
                                 <Link className="btn btn-primary" href="#consultation">
@@ -79,6 +79,9 @@ export default function HomePage() {
                             </p>
                             <p>
                                 My practice sits at the intersection of business strategy and technology governance - helping leadership teams move from uncertainty to clarity before significant investment is committed.
+                            </p>
+                            <p>
+                                I also conduct computational neuroscience research. That work is not academic decoration - it informs how I advise on human decision-making, customer behavior, human-AI collaboration, and team performance, so technology strategy aligns with how people actually think and act.
                             </p>
                         </ScrollReveal>
                         <ScrollReveal className="split-block" delay="0.1s">
@@ -166,8 +169,13 @@ export default function HomePage() {
                             </article>
                             <article className="trust-card">
                                 <h3>Depth that survives execution</h3>
-                                <p>More than a decade across research, enterprise technology leadership, and founder roles - ensuring strategy reflects operational reality.</p>
+                                <p>More than a decade across research, enterprise technology leadership, and founder roles - including computational neuroscience work on decision-making and ensuring strategy reflects operational reality.</p>
                             </article>
+                        </ScrollReveal>
+                        <ScrollReveal className="foundation-note" delay="0.15s">
+                            <p>
+                                <strong>Where neuroscience strengthens your outcomes:</strong> clearer leadership and pricing decisions; products and experiences aligned with customer psychology; AI that collaborates with people rather than replacing them; adaptive personalization; and stronger team learning, motivation, and culture.
+                            </p>
                         </ScrollReveal>
                     </div>
                 </section>
@@ -184,8 +192,7 @@ export default function HomePage() {
                                 ["Primary", "Technology Strategy Advisor", "Independent advisory for executive teams on technology investment, AI enablement, and enterprise transformation."],
                                 ["Leadership", "Founder & Director, nZO Innovations", "Operational and capital allocation perspective from building and leading a technology venture."],
                                 ["Advisory", "Technology Consultant", "Independent consulting on digital transformation and strategic technology direction."],
-                                ["Research", "Researcher", "Peer-reviewed work in healthcare technology, medical imaging, and applied machine learning."],
-                                ["Academia", "University Lecturer, SLIIT", "Teaching and mentoring - connecting industry practice with structured analysis."],
+                                ["Research", "Computational Neuroscience Researcher", "Research on human decision-making, cognition, and human-AI interaction - applied to technology strategy and organizational outcomes."],
                             ].map(([label, title, text], i) => (
                                 <ScrollReveal key={label} className="cred-role" delay={`${i * 0.05}s`}>
                                     <span>{label}</span>
@@ -195,20 +202,23 @@ export default function HomePage() {
                             ))}
                         </div>
                         <ScrollReveal className="foundation-note" delay="0.25s">
-                            <p>Advisory recommendations are grounded in enterprise technology leadership experience - ensuring strategy reflects what organizations can actually execute.</p>
+                            <p>
+                                Advisory recommendations are grounded in enterprise technology leadership experience - ensuring strategy reflects what organizations can actually execute.{" "}
+                                <Link href="/portfolio">View full professional history →</Link>
+                            </p>
                         </ScrollReveal>
                         <ScrollReveal className="metrics-row" delay="0.15s">
                             <div className="metric">
-                                <strong>10+</strong>
+                                <strong>7+</strong>
                                 <span>Years across research, enterprise technology, and founder leadership</span>
                             </div>
                             <div className="metric">
-                                <strong>Research</strong>
-                                <span>Healthcare technology and applied AI - peer-reviewed publications</span>
+                                <strong>10+</strong>
+                                <span>Public speaking, guest lectures and workshops</span>
                             </div>
                             <div className="metric">
-                                <strong>Teaching</strong>
-                                <span>University lecturer - SLIIT</span>
+                                <strong>5+</strong>
+                                <span>Active research directions in applied AI and enterprise intelligence</span>
                             </div>
                             <div className="metric">
                                 <strong>Innovation</strong>
@@ -362,7 +372,7 @@ export default function HomePage() {
                         <div className="faq-list">
                             {[
                                 ["Who do you advise?", "Founders, CEOs, board members, investors, CIOs, and enterprise leaders facing decisions where technology affects business performance, risk, or long-term value."],
-                                ["What is your primary role?", "Technology Strategy Advisor. Supporting experience includes founder leadership, research, university teaching, and enterprise technology practice."],
+                                ["What is your primary role?", "Technology Strategy Advisor. I also conduct computational neuroscience research that strengthens advisory on AI, customer experience, and organizational decisions - alongside founder leadership, university teaching, and enterprise technology practice."],
                                 ["What does an engagement produce?", "Clarity for executive decision-making - strategic direction, independent assessment, and actionable recommendations tied to business outcomes."],
                             ].map(([q, a], i) => (
                                 <ScrollReveal key={q} className="faq-item" delay={`${i * 0.05}s`}>

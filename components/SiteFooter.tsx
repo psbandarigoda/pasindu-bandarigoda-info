@@ -22,7 +22,11 @@ export function SiteFooter({ variant = "home" }: SiteFooterProps) {
                         <>
                             <Link href="/#about">About</Link>
                             <Link href="/#problems">Challenges</Link>
+                            <Link href="/#thinking">Perspective</Link>
+                            <Link href="/#trust">Trust</Link>
+                            <Link href="/#credentials">Experience</Link>
                             <Link href="/#engage">Engage</Link>
+                            <Link href="/portfolio">Portfolio</Link>
                             <Link href="/insights">Insights</Link>
                             <Link href="/#consultation">Consultation</Link>
                             <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
@@ -35,6 +39,7 @@ export function SiteFooter({ variant = "home" }: SiteFooterProps) {
                     ) : (
                         <>
                             <Link href="/">Home</Link>
+                            <Link href="/portfolio">Portfolio</Link>
                             <Link href="/insights">Insights</Link>
                             <Link href="/#consultation">Consultation</Link>
                         </>

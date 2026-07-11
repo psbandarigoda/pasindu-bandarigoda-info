@@ -12,19 +12,39 @@ type SiteHeaderProps = {
 
 const homeNavLinks = [
     { href: "/#about", label: "About" },
-    { href: "/#problems", label: "Challenges" },
-    { href: "/#thinking", label: "Perspective" },
-    { href: "/#trust", label: "Trust" },
-    { href: "/#credentials", label: "Experience" },
-    { href: "/#engage", label: "Engage" },
+    { href: "/#problems", label: "Expertise" },
+    { href: "/portfolio", label: "Track Record" },
     { href: "/insights", label: "Insights" },
 ];
+
+const minimalNavLinks = [
+    { href: "/", label: "Home" },
+    { href: "/#problems", label: "Expertise" },
+    { href: "/portfolio", label: "Track Record" },
+    { href: "/insights", label: "Insights" },
+];
+
+function ConnectButton({ className, onNavigate }: { className?: string; onNavigate?: () => void }) {
+    return (
+        <a
+            className={["btn btn-primary btn-nav", className].filter(Boolean).join(" ")}
+            href={TOPMATE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onNavigate}
+        >
+            Connect
+        </a>
+    );
+}
 
 export function SiteHeader({ variant = "home" }: SiteHeaderProps) {
     const pathname = usePathname();
     const [navOpen, setNavOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const isHome = variant === "home" && pathname === "/";
+    const navLinks = isHome ? homeNavLinks : minimalNavLinks;
+    const closeNav = () => setNavOpen(false);
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,34 +57,32 @@ export function SiteHeader({ variant = "home" }: SiteHeaderProps) {
         setNavOpen(false);
     }, [pathname]);
 
-    const navLinks =
-        variant === "home"
-            ? homeNavLinks
-            : [
-                  { href: "/insights", label: "Insights" },
-                  { href: "/#consultation", label: "Consultation" },
-              ];
+    useEffect(() => {
+        document.body.style.overflow = navOpen ? "hidden" : "";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [navOpen]);
 
     return (
         <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
             <div className="shell header-inner">
-                <Link className="brand" href="/">
-                    Pasindu Bandarigoda
+                <Link className="brand" href="/" onClick={closeNav}>
+                    <span className="brand-full">Pasindu Bandarigoda</span>
+                    <span className="brand-short">P. Bandarigoda</span>
                 </Link>
 
-                {isHome && (
-                    <button
-                        className="nav-toggle"
-                        type="button"
-                        aria-expanded={navOpen}
-                        aria-controls="site-nav"
-                        aria-label="Toggle navigation"
-                        onClick={() => setNavOpen((open) => !open)}
-                    >
-                        <span />
-                        <span />
-                    </button>
-                )}
+                <button
+                    className="nav-toggle"
+                    type="button"
+                    aria-expanded={navOpen}
+                    aria-controls="site-nav"
+                    aria-label="Toggle navigation"
+                    onClick={() => setNavOpen((open) => !open)}
+                >
+                    <span />
+                    <span />
+                </button>
 
                 <nav
                     className={`site-nav${navOpen ? " is-open" : ""}`}
@@ -72,30 +90,18 @@ export function SiteHeader({ variant = "home" }: SiteHeaderProps) {
                     aria-label="Primary navigation"
                 >
                     {navLinks.map((link) => (
-                        <Link key={link.href} href={link.href} onClick={() => setNavOpen(false)}>
+                        <Link key={link.href} href={link.href} onClick={closeNav}>
                             {link.label}
                         </Link>
                     ))}
-                    {isHome && (
-                        <div className="site-nav-cta">
-                            <a className="btn btn-outline" href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                                Book Appointment
-                            </a>
-                            <Link className="btn btn-primary" href="/#consultation">
-                                Request Consultation
-                            </Link>
-                        </div>
-                    )}
+                    <div className="site-nav-cta">
+                        <ConnectButton onNavigate={closeNav} />
+                    </div>
                 </nav>
 
                 <div className="header-actions">
-                    {isHome && <ThemeToggle />}
-                    <a className="btn btn-outline header-cta btn-nav" href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                        Book Appointment
-                    </a>
-                    <Link className="btn btn-primary header-cta btn-nav" href="/#consultation">
-                        Request Consultation
-                    </Link>
+                    <ThemeToggle />
+                    <ConnectButton className="header-connect" />
                 </div>
             </div>
         </header>
