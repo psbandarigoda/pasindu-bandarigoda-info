@@ -121,7 +121,7 @@ export const portfolioPillars = [
         text: "Senior engineering leadership on platform infrastructure, monitoring, CI/CD, and IFS.AI initiatives - where reliability, architecture, and production AI meet enterprise reality.",
     },
     {
-        label: "Founder & operator",
+        label: "Founder & Director",
         title: "Building ventures from strategy to market",
         text: "Founder and director roles across technology consulting and consumer platforms - bringing capital allocation, product judgment, and operational accountability to advisory work.",
     },
