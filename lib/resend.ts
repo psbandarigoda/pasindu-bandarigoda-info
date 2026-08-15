@@ -44,7 +44,7 @@ export async function sendLeadNotification(lead: Lead) {
     const { error } = await client.emails.send({
         from,
         to: [to],
-        subject: `New inquiry from ${lead.name}`,
+        subject: `Appointment Inquiry From: ${lead.name}`,
         html,
     });
 

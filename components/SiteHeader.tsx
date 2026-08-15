@@ -12,14 +12,14 @@ type SiteHeaderProps = {
 
 const homeNavLinks = [
     { href: "/#about", label: "About" },
-    { href: "/#problems", label: "Expertise" },
+    { href: "/#problems", label: "Problems" },
     { href: "/portfolio", label: "Track Record" },
     { href: "/insights", label: "Insights" },
 ];
 
 const minimalNavLinks = [
     { href: "/", label: "Home" },
-    { href: "/#problems", label: "Expertise" },
+    { href: "/#problems", label: "Problems" },
     { href: "/portfolio", label: "Track Record" },
     { href: "/insights", label: "Insights" },
 ];
@@ -33,7 +33,7 @@ function ConnectButton({ className, onNavigate }: { className?: string; onNaviga
             rel="noopener noreferrer"
             onClick={onNavigate}
         >
-            Connect
+            Discuss a Problem
         </a>
     );
 }

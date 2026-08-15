@@ -18,32 +18,17 @@ export function SiteFooter({ variant = "home" }: SiteFooterProps) {
                     </span>
                 )}
                 <nav className="footer-links" aria-label="Footer navigation">
-                    {variant === "home" ? (
-                        <>
-                            <Link href="/#about">About</Link>
-                            <Link href="/#problems">Challenges</Link>
-                            <Link href="/#thinking">Perspective</Link>
-                            <Link href="/#trust">Trust</Link>
-                            <Link href="/#credentials">Experience</Link>
-                            <Link href="/#engage">Engage</Link>
-                            <Link href="/portfolio">Portfolio</Link>
-                            <Link href="/insights">Insights</Link>
-                            <Link href="/#consultation">Consultation</Link>
-                            <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                                Book Appointment
-                            </a>
-                            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
-                                LinkedIn
-                            </a>
-                        </>
-                    ) : (
-                        <>
-                            <Link href="/">Home</Link>
-                            <Link href="/portfolio">Portfolio</Link>
-                            <Link href="/insights">Insights</Link>
-                            <Link href="/#consultation">Consultation</Link>
-                        </>
-                    )}
+                    <Link href="/#about">About</Link>
+                    <Link href="/#problems">Problems</Link>
+                    <Link href="/portfolio">Track Record</Link>
+                    <Link href="/insights">Insights</Link>
+                    <Link href="/#consultation">Discuss a Problem</Link>
+                    <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
+                        Topmate
+                    </a>
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
                 </nav>
             </div>
         </footer>

@@ -306,12 +306,21 @@ a {
 }
 
 .hero-eyebrow {
-    margin: 0 0 1.5rem;
+    margin: 0 0 0.75rem;
     font-size: 0.6875rem;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-faint);
+}
+
+.hero-core-areas {
+    margin: 0 0 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
 }
 
 .hero-title {
@@ -323,8 +332,16 @@ a {
     letter-spacing: -0.02em;
 }
 
+.hero-audience {
+    margin: 0 0 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
 .hero-lead {
-    margin: 0 0 2.5rem;
+    margin: 0 0 1rem;
     font-size: 1.125rem;
     line-height: 1.75;
     color: var(--text-muted);
@@ -364,10 +381,112 @@ a {
 .hero-caption {
     width: 100%;
     margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
     text-align: center;
     font-size: 0.8125rem;
-    line-height: 1.6;
+    line-height: 1.45;
     color: var(--text-faint);
+}
+
+.hero-caption-line {
+    display: block;
+    white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+    .hero-caption-line {
+        white-space: normal;
+    }
+}
+
+/* About foundations */
+.about-foundations {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.about-foundation {
+    padding: 1.5rem 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.about-foundation h3 {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.about-foundation p {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+.expertise-questions {
+    margin: 0.75rem 0 0;
+    padding-left: 1.1rem;
+    color: var(--text-muted);
+}
+
+.expertise-questions li {
+    margin-bottom: 0.35rem;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+}
+
+.funnel-cta-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.funnel-cta-label {
+    margin: 0 0 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+}
+
+.funnel-cta-block .btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.funnel-cta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 3rem;
+    padding: 1.75rem 2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+}
+
+.funnel-cta-bar h3 {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.funnel-cta-bar p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9375rem;
 }
 
 /* Trust grid */
@@ -433,6 +552,36 @@ a {
     margin: 0;
     font-size: 0.9375rem;
     line-height: 1.7;
+    color: var(--text-muted);
+}
+
+.expertise-situation {
+    margin: 0 0 0.85rem !important;
+}
+
+.tangible-examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.tangible-example {
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--accent);
+}
+
+.tangible-example h3 {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.tangible-example p {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.65;
     color: var(--text-muted);
 }
 
@@ -543,6 +692,51 @@ a {
     font-size: 1.35rem;
     font-style: italic;
     color: var(--text-muted);
+}
+
+.method-steps {
+    margin-bottom: 3rem;
+}
+
+.principles-block {
+    margin-top: 1rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+}
+
+.principles-block .subsection-title {
+    margin: 0 0 1.25rem;
+}
+
+.principles-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0;
+}
+
+.principles-list li {
+    position: relative;
+    padding: 0.85rem 0 0.85rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+}
+
+.principles-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.3rem;
+    width: 6px;
+    height: 1px;
+    background: var(--accent);
+}
+
+.principles-block .process-footer {
+    margin-top: 2rem;
 }
 
 /* Engagements */
@@ -1078,9 +1272,16 @@ a {
 
     .trust-grid,
     .process-steps,
+    .tangible-examples,
     .cred-roles,
-    .metrics-row {
+    .metrics-row,
+    .about-foundations {
         grid-template-columns: 1fr;
+    }
+
+    .funnel-cta-bar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .expertise-grid,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { BackToTop } from "@/components/SiteChrome";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { PROFILE_IMAGE, SITE_URL } from "@/lib/site";
+import { OWNER_EMAIL, PROFILE_IMAGE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         template: "%s | Pasindu Bandarigoda",
     },
     description:
-        "Pasindu Bandarigoda helps leadership teams solve complex business challenges through technology, AI, and strategic systems thinking.",
+        "Technology Strategy Advisor for complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
     authors: [{ name: "Pasindu Bandarigoda" }],
     openGraph: {
         siteName: "Pasindu Bandarigoda",
@@ -61,9 +61,9 @@ const jsonLd = {
             name: "Pasindu Bandarigoda",
             jobTitle: "Technology Strategy Advisor",
             description:
-                "Technology Strategy Advisor helping organizations solve complex business challenges through technology, AI, and strategic systems thinking.",
+                "Technology Strategy Advisor - complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
             url: SITE_URL,
-            email: "bgpsandaruwan@gmail.com",
+            email: OWNER_EMAIL,
             telephone: "+94773638063",
             sameAs: [
                 "https://www.linkedin.com/in/pasindu-bandarigoda/",
@@ -87,9 +87,10 @@ const jsonLd = {
             provider: { "@id": `${SITE_URL}/#person` },
             serviceType: [
                 "Technology Strategy",
-                "AI Enablement",
-                "Digital Transformation Advisory",
-                "Enterprise Transformation",
+                "Complex Systems Advisory",
+                "AI & Human Work Design",
+                "Architecture & Integration Advisory",
+                "Technology Decision Review",
             ],
         },
     ],

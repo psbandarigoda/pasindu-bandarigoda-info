@@ -5,17 +5,24 @@ import { ContactForm } from "@/components/ContactForm";
 import { ScrollReveal } from "@/components/SiteChrome";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import {
+    advisoryEngagements,
+    advisoryPrinciples,
+    expertiseDecisions,
+    problemSolvingMethod,
+    tangibleExamples,
+} from "@/lib/advisory-content";
 import { LINKEDIN_URL, OWNER_EMAIL, PROFILE_IMAGE, SITE_URL, TOPMATE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
-    title: "Pasindu Bandarigoda | Technology Strategy Advisor",
+    title: "Pasindu Bandarigoda - Technology Strategy Advisor",
     description:
-        "Pasindu Bandarigoda helps leadership teams solve complex business challenges through technology, AI, and strategic systems thinking.",
+        "Technology Strategy Advisor for complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
     alternates: { canonical: SITE_URL },
     openGraph: {
-        title: "Pasindu Bandarigoda | Technology Strategy Advisor",
+        title: "Pasindu Bandarigoda - Technology Strategy Advisor",
         description:
-            "Strategic advisory for executives navigating technology investment, AI enablement, and enterprise transformation.",
+            "Improve complex technology decisions by understanding the business objective and the system behind the problem before defining the solution.",
         url: SITE_URL,
     },
 };
@@ -33,21 +40,29 @@ export default function HomePage() {
                     <div className="shell hero-grid">
                         <ScrollReveal className="hero-content" delay="0.05s">
                             <p className="hero-eyebrow">Technology Strategy Advisor</p>
+                            <p className="hero-core-areas">
+                                Complex Systems · Technology-Enabled Problem Solving
+                            </p>
                             <h1 className="hero-title" id="hero-heading">
-                                I help organizations solve complex business challenges through technology, AI, and strategic systems thinking.
+                                I help leaders solve complex technology and systems problems.
                             </h1>
                             <p className="hero-lead">
-                                I advise leadership teams when technology investment must produce measurable results - operational excellence, sustainable growth, and long-term competitive advantage.
+                                I work across business processes, people, software, data, AI, and architecture to understand
+                                what is driving the problem and define the technology direction that best supports the
+                                business objective.
+                            </p>
+                            <p className="hero-audience">
+                                Founders · CEOs · CIOs · CTOs · COOs · Leadership Teams
                             </p>
                             <div className="hero-actions">
-                                <Link className="btn btn-primary" href="#consultation">
-                                    Request Executive Consultation
-                                </Link>
-                                <a className="btn btn-outline" href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                                    Book an Appointment
+                                <a className="btn btn-primary" href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
+                                    Discuss a Problem
                                 </a>
                                 <Link className="btn btn-outline" href="#problems">
-                                    Business Challenges
+                                    Problems I Work On
+                                </Link>
+                                <Link className="btn btn-outline" href="/portfolio">
+                                    Track Record
                                 </Link>
                             </div>
                         </ScrollReveal>
@@ -62,92 +77,196 @@ export default function HomePage() {
                                     priority
                                 />
                             </figure>
-                            <figcaption className="hero-caption">Business outcomes first. Technology in service of strategy.</figcaption>
+                            <figcaption className="hero-caption">
+                                <span className="hero-caption-line">
+                                    <strong>Business outcomes first.</strong>
+                                </span>
+                                <span className="hero-caption-line">Technology in service of strategy.</span>
+                            </figcaption>
                         </ScrollReveal>
                     </div>
                 </section>
 
+                {/* ABOUT */}
                 <section className="section section-border" id="about" aria-labelledby="about-heading">
-                    <div className="shell split">
-                        <ScrollReveal className="split-block">
-                            <span className="section-label">Who I am</span>
-                            <h2 className="section-title" id="about-heading">
-                                Technology Strategy Advisor to executive decision-makers.
-                            </h2>
-                            <p>
-                                I work with founders, CEOs, boards, and enterprise leaders on decisions where technology shapes organizational capability, capital allocation, and competitive positioning.
-                            </p>
-                            <p>
-                                My practice sits at the intersection of business strategy and technology governance - helping leadership teams move from uncertainty to clarity before significant investment is committed.
-                            </p>
-                            <p>
-                                I also conduct computational neuroscience research. That work is not academic decoration - it informs how I advise on human decision-making, customer behavior, human-AI collaboration, and team performance, so technology strategy aligns with how people actually think and act.
-                            </p>
-                        </ScrollReveal>
-                        <ScrollReveal className="split-block" delay="0.1s">
-                            <span className="section-label">What I am not</span>
-                            <h2 className="section-title">Advisory, not delivery.</h2>
-                            <p>
-                                I do not sell software development, implementation teams, or vendor solutions. Engagements are diagnostic and strategic - focused on executive decision-making, transformation direction, and technology governance.
-                            </p>
-                            <p>When execution is required, I help leaders define the path. I do not become the delivery organization.</p>
-                        </ScrollReveal>
-                    </div>
-                </section>
-
-                <section className="section section-alt" id="problems">
                     <div className="shell">
                         <ScrollReveal className="section-header">
-                            <span className="section-label">Business challenges</span>
-                            <h2 className="section-title">Problems that affect revenue, risk, and organizational capability.</h2>
-                            <p className="section-intro">These are business problems first. Technology is often involved - but never the starting point.</p>
+                            <span className="section-label">About</span>
+                            <h2 className="section-title" id="about-heading">
+                                Why this perspective is useful
+                            </h2>
+                            <p className="section-intro">
+                                I work where business objectives and complex technology or systems decisions intersect. The
+                                starting point is the outcome the organization needs - not a preferred platform, architecture,
+                                AI model, or implementation method. Once the objective is clear, I examine how the system
+                                behind the problem actually works before deciding what should change.
+                            </p>
                         </ScrollReveal>
-                        <div className="problems-list">
-                            {[
-                                ["01", "Misaligned technology investment", "Capital deployed without clear connection to revenue growth, cost structure, or strategic priorities. I help leadership teams align technology investment with measurable business outcomes."],
-                                ["02", "Transformation that fails to scale", "Digital initiatives that succeed in pilot but cannot change how the organization operates. I design transformation pathways grounded in governance, capability, and operational reality."],
-                                ["03", "AI adoption without business case or readiness", "Pressure to adopt AI without honest assessment of organizational readiness, risk exposure, or return potential. I provide evidence-based AI enablement guidance for executive teams."],
-                                ["04", "Growth constrained by organizational complexity", "Fragmented operations and accumulated technology cost limiting agility and margin. I advise on enterprise transformation that restores operational excellence and business resilience."],
-                                ["05", "High-stakes decisions without independent perspective", "Boards and investors facing technology decisions without neutral, rigorous assessment. I support executive decision-making with independent analysis - where my experience applies."],
-                            ].map(([num, title, text], i) => (
-                                <ScrollReveal key={num} className="problem-item" delay={`${i * 0.05}s`}>
-                                    <span className="problem-num">{num}</span>
+
+                        <div className="about-foundations">
+                            <ScrollReveal className="about-foundation">
+                                <h3>Enterprise technology</h3>
+                                <p>
+                                    Hands-on experience with enterprise platforms, software, infrastructure, observability,
+                                    AI/MLOps, authentication, cloud and on-prem systems, and architecture.
+                                </p>
+                            </ScrollReveal>
+                            <ScrollReveal className="about-foundation" delay="0.05s">
+                                <h3>Systems thinking</h3>
+                                <p>
+                                    Looking across process, people, information, software, data, decisions, and architecture
+                                    - rather than treating an application in isolation.
+                                </p>
+                            </ScrollReveal>
+                            <ScrollReveal className="about-foundation" delay="0.1s">
+                                <h3>Founder / operator experience</h3>
+                                <p>
+                                    Product, technology, architecture, partnership, prioritization, and resource decisions
+                                    where consequences are real.
+                                </p>
+                            </ScrollReveal>
+                            <ScrollReveal className="about-foundation" delay="0.15s">
+                                <h3>Research &amp; academic perspective</h3>
+                                <p>
+                                    Emerging research in human-AI systems, cognition, decision-making, enterprise systems, and
+                                    decision support - labeled as emerging, not established proprietary doctrine.
+                                </p>
+                            </ScrollReveal>
+                        </div>
+
+                        <ScrollReveal className="split" delay="0.2s" style={{ marginTop: "3rem" }}>
+                            <div className="split-block">
+                                <span className="section-label">Strategy before implementation</span>
+                                <h3 className="subsection-title">Recommendation first</h3>
+                                <p>
+                                    Primary work is understanding the objective, evaluating options, and defining system or
+                                    technology direction before major implementation begins.
+                                </p>
+                                <p>
+                                    Advisory work is recommendation-led and delivery-agnostic. Where an affiliated
+                                    organization could participate in implementation, that relationship is disclosed and the
+                                    client remains free to choose any delivery partner.
+                                </p>
+                            </div>
+                            <div className="split-block funnel-cta-block">
+                                <p className="funnel-cta-label">Next</p>
+                                <h3 className="subsection-title">Problems I work on</h3>
+                                <p>
+                                    Situations where process, people, software, data, AI, and architecture interact - and the
+                                    right direction is not immediately obvious.
+                                </p>
+                                <Link className="btn btn-primary" href="#problems">
+                                    View Problems
+                                </Link>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                </section>
+
+                {/* PROBLEMS */}
+                <section className="section section-alt" id="problems" aria-labelledby="expertise-heading">
+                    <div className="shell">
+                        <ScrollReveal className="section-header">
+                            <span className="section-label">Expertise</span>
+                            <h2 className="section-title" id="expertise-heading">
+                                Complex problems I work on
+                            </h2>
+                            <p className="section-intro">
+                                Bounded problems at the intersection of process, people, decisions, information, software,
+                                data, AI, and architecture - especially when the right technical direction is not obvious.
+                            </p>
+                        </ScrollReveal>
+
+                        <div className="problems-list expertise-decisions">
+                            {expertiseDecisions.map((item, i) => (
+                                <ScrollReveal key={item.num} className="problem-item" delay={`${i * 0.04}s`}>
+                                    <span className="problem-num">{item.num}</span>
                                     <div>
-                                        <h3>{title}</h3>
-                                        <p>{text}</p>
+                                        <h3>{item.title}</h3>
+                                        <p className="expertise-situation">{item.situation}</p>
+                                        <ul className="expertise-questions">
+                                            {item.questions.map((q) => (
+                                                <li key={q}>{q}</li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </ScrollReveal>
                             ))}
                         </div>
+
+                        <ScrollReveal className="section-header" style={{ marginTop: "3.5rem" }}>
+                            <span className="section-label">In practice</span>
+                            <h2 className="section-title">How common situations are approached</h2>
+                        </ScrollReveal>
+                        <div className="tangible-examples">
+                            {tangibleExamples.map((example, i) => (
+                                <ScrollReveal key={example.title} className="tangible-example" delay={`${i * 0.05}s`}>
+                                    <h3>{example.title}</h3>
+                                    <p>{example.text}</p>
+                                </ScrollReveal>
+                            ))}
+                        </div>
+
+                        <ScrollReveal className="funnel-cta-bar" delay="0.1s">
+                            <div>
+                                <h3>Evidence behind the judgment</h3>
+                                <p>Enterprise technology, founder/operator work, research, and academic contribution.</p>
+                            </div>
+                            <Link className="btn btn-primary" href="/portfolio">
+                                View Track Record
+                            </Link>
+                        </ScrollReveal>
                     </div>
                 </section>
 
-                <section className="section section-border" id="thinking" aria-labelledby="thinking-heading">
+                {/* METHOD */}
+                <section className="section section-border" id="method" aria-labelledby="method-heading">
                     <div className="shell">
                         <ScrollReveal className="section-header">
                             <span className="section-label">How I think</span>
-                            <h2 className="section-title" id="thinking-heading">Business problem first. Systems thinking throughout.</h2>
+                            <h2 className="section-title" id="method-heading">
+                                Understand the system. Identify the constraint. Evaluate the options. Define the direction.
+                            </h2>
                             <p className="section-intro">
-                                Every engagement begins with understanding constraints, incentives, and the organizational dynamics that determine whether strategy becomes results.
+                                Business outcomes first. Technology in service of strategy. Once the objective is clear, map
+                                how the system works, find what is actually blocking the outcome, then decide what technology
+                                should - and should not - do.
                             </p>
                         </ScrollReveal>
-                        <ScrollReveal className="split" delay="0.1s">
-                            <div className="split-block">
-                                <p>
-                                    I analyse deeply, recommend with precision, and say clearly when the answer is to wait, simplify, or redirect investment. That judgment comes from research discipline, founder experience, and years working inside complex technology environments.
-                                </p>
-                                <p>Technology is never the objective. It is one lever among many - applied only when it creates strategic advantage or operational improvement.</p>
-                            </div>
-                            <div className="split-block">
-                                <h3 className="subsection-title">Decisions I help leadership teams navigate</h3>
-                                <ul className="values-list">
-                                    <li>Where to invest - and where to stop spending</li>
-                                    <li>Build, buy, or partner for critical capability</li>
-                                    <li>Whether the organization is ready for AI at scale</li>
-                                    <li>How to de-risk transformation before board commitment</li>
-                                    <li>How technology governance supports long-term value</li>
-                                </ul>
-                            </div>
+
+                        <div className="process-steps method-steps">
+                            {problemSolvingMethod.map((step, i) => (
+                                <ScrollReveal key={step.phase} className="process-step" delay={`${i * 0.03}s`}>
+                                    <span>{step.phase}</span>
+                                    <h3>{step.title}</h3>
+                                    <p>{step.text}</p>
+                                </ScrollReveal>
+                            ))}
+                        </div>
+
+                        <ScrollReveal className="principles-block" delay="0.1s">
+                            <h3 className="subsection-title">Working principles</h3>
+                            <ul className="principles-list">
+                                {advisoryPrinciples.map((principle) => (
+                                    <li key={principle}>{principle}</li>
+                                ))}
+                            </ul>
+                        </ScrollReveal>
+
+                        <ScrollReveal className="section-header" style={{ marginTop: "4rem" }}>
+                            <span className="section-label">Ways to work</span>
+                            <h2 className="section-title">Engagements</h2>
+                            <p className="section-intro">
+                                Focused on clarity before commitment - objective, system, options, and direction.
+                            </p>
+                        </ScrollReveal>
+                        <ScrollReveal className="engagement-grid" delay="0.1s" id="engagements">
+                            {advisoryEngagements.map((item) => (
+                                <article key={item.title} className="engagement-item">
+                                    <h3>{item.title}</h3>
+                                    <p>{item.text}</p>
+                                </article>
+                            ))}
                         </ScrollReveal>
                     </div>
                 </section>
@@ -155,140 +274,52 @@ export default function HomePage() {
                 <section className="section section-alt" id="trust">
                     <div className="shell">
                         <ScrollReveal className="section-header">
-                            <span className="section-label">Why executives engage</span>
-                            <h2 className="section-title">Independent judgment. Evidence over opinion.</h2>
+                            <span className="section-label">Perspective</span>
+                            <h2 className="section-title">A complementary view on a bounded problem</h2>
+                            <p className="section-intro">
+                                You bring industry knowledge, operational experience, and authority. An external systems
+                                perspective can surface options, constraints, and consequences that are harder to see from
+                                inside.
+                            </p>
                         </ScrollReveal>
                         <ScrollReveal className="trust-grid" delay="0.1s">
                             <article className="trust-card">
-                                <h3>Business-first analysis</h3>
-                                <p>Recommendations anchored in business outcomes - revenue, efficiency, risk, and organizational capability - not technology trends.</p>
+                                <h3>Outcome before technology</h3>
+                                <p>
+                                    Start from what needs to improve - not from a preferred tool, model, or vendor roadmap.
+                                </p>
                             </article>
                             <article className="trust-card">
-                                <h3>Vendor-neutral perspective</h3>
-                                <p>No product to sell. No delivery team to feed. Assessment focused on what creates value and what does not.</p>
+                                <h3>Evidence over trends</h3>
+                                <p>
+                                    Direction based on operating context, constraints, and trade-offs - not fashion alone.
+                                </p>
                             </article>
                             <article className="trust-card">
-                                <h3>Depth that survives execution</h3>
-                                <p>More than a decade across research, enterprise technology leadership, and founder roles - including computational neuroscience work on decision-making and ensuring strategy reflects operational reality.</p>
+                                <h3>Grounded in real systems</h3>
+                                <p>
+                                    7+ years across enterprise technology, research, and founder/operator work - so direction
+                                    reflects what organizations can operate.
+                                </p>
                             </article>
-                        </ScrollReveal>
-                        <ScrollReveal className="foundation-note" delay="0.15s">
-                            <p>
-                                <strong>Where neuroscience strengthens your outcomes:</strong> clearer leadership and pricing decisions; products and experiences aligned with customer psychology; AI that collaborates with people rather than replacing them; adaptive personalization; and stronger team learning, motivation, and culture.
-                            </p>
-                        </ScrollReveal>
-                    </div>
-                </section>
-
-                <section className="section section-border" id="credentials">
-                    <div className="shell">
-                        <ScrollReveal className="section-header">
-                            <span className="section-label">Experience</span>
-                            <h2 className="section-title">What supports this perspective.</h2>
-                            <p className="section-intro">Supporting credentials that inform advisory work - not the primary identity.</p>
-                        </ScrollReveal>
-                        <div className="cred-roles">
-                            {[
-                                ["Primary", "Technology Strategy Advisor", "Independent advisory for executive teams on technology investment, AI enablement, and enterprise transformation."],
-                                ["Leadership", "Founder & Director, nZO Innovations", "Operational and capital allocation perspective from building and leading a technology venture."],
-                                ["Advisory", "Technology Consultant", "Independent consulting on digital transformation and strategic technology direction."],
-                                ["Research", "Computational Neuroscience Researcher", "Research on human decision-making, cognition, and human-AI interaction - applied to technology strategy and organizational outcomes."],
-                            ].map(([label, title, text], i) => (
-                                <ScrollReveal key={label} className="cred-role" delay={`${i * 0.05}s`}>
-                                    <span>{label}</span>
-                                    <strong>{title}</strong>
-                                    <p>{text}</p>
-                                </ScrollReveal>
-                            ))}
-                        </div>
-                        <ScrollReveal className="foundation-note" delay="0.25s">
-                            <p>
-                                Advisory recommendations are grounded in enterprise technology leadership experience - ensuring strategy reflects what organizations can actually execute.{" "}
-                                <Link href="/portfolio">View full professional history →</Link>
-                            </p>
                         </ScrollReveal>
                         <ScrollReveal className="metrics-row" delay="0.15s">
                             <div className="metric">
                                 <strong>7+</strong>
-                                <span>Years across research, enterprise technology, and founder leadership</span>
+                                <span>Years in enterprise technology, research, and founder/operator work</span>
                             </div>
                             <div className="metric">
-                                <strong>10+</strong>
-                                <span>Public speaking, guest lectures and workshops</span>
+                                <strong>600+</strong>
+                                <span>Engineers enabled on a shared monitoring platform</span>
                             </div>
                             <div className="metric">
-                                <strong>5+</strong>
-                                <span>Active research directions in applied AI and enterprise intelligence</span>
+                                <strong>~50%</strong>
+                                <span>Reduction in on-call alerts</span>
                             </div>
                             <div className="metric">
-                                <strong>Innovation</strong>
-                                <span>Competition and hackathon evaluation</span>
+                                <strong>99%</strong>
+                                <span>Uptime on critical environments</span>
                             </div>
-                        </ScrollReveal>
-                        <ScrollReveal className="industries-block" delay="0.2s">
-                            <h3 className="subsection-title">Industries understood</h3>
-                            <ul className="industries-list">
-                                <li>Technology and high-growth companies</li>
-                                <li>Healthcare organizations</li>
-                                <li>Enterprises in digital transformation</li>
-                                <li>Organizations evaluating AI enablement</li>
-                                <li>Investors and leadership teams facing technology decisions</li>
-                            </ul>
-                        </ScrollReveal>
-                        <ScrollReveal className="values-block" delay="0.25s">
-                            <h3 className="subsection-title">Professional values</h3>
-                            <ul className="values-list">
-                                <li>Business outcomes before technology trends</li>
-                                <li>Evidence-based recommendations</li>
-                                <li>Honest assessment - including when not to invest</li>
-                                <li>Long-term partnership over transactional advice</li>
-                                <li>Clarity for executive decision-making</li>
-                            </ul>
-                        </ScrollReveal>
-                    </div>
-                </section>
-
-                <section className="section section-alt" id="engage">
-                    <div className="shell">
-                        <ScrollReveal className="section-header">
-                            <span className="section-label">How we engage</span>
-                            <h2 className="section-title">Structured advisory for executive teams.</h2>
-                            <p className="section-intro">Engagements produce clarity and written direction - not activity for its own sake.</p>
-                        </ScrollReveal>
-                        <div className="process-steps">
-                            {[
-                                ["Phase 01", "Understand the business context", "Stakeholders, constraints, and the outcomes that define success."],
-                                ["Phase 02", "Identify the real constraint", "Often organizational - not technical."],
-                                ["Phase 03", "Define strategic options", "Governance, capability, and investment pathways aligned to business capacity."],
-                                ["Phase 04", "Validate with evidence", "Stress-test assumptions before capital is committed."],
-                                ["Phase 05", "Guide leadership through execution", "Executive oversight - without becoming the delivery team."],
-                                ["Phase 06", "Measure business impact", "Outcomes tied to performance - not project activity."],
-                            ].map(([phase, title, text], i) => (
-                                <ScrollReveal key={phase} className="process-step" delay={`${i * 0.05}s`}>
-                                    <span>{phase}</span>
-                                    <h3>{title}</h3>
-                                    <p>{text}</p>
-                                </ScrollReveal>
-                            ))}
-                        </div>
-                        <ScrollReveal className="section-header" style={{ marginTop: "4rem" }}>
-                            <span className="section-label">Advisory engagements</span>
-                            <h2 className="section-title">Where I create value for leadership teams.</h2>
-                        </ScrollReveal>
-                        <ScrollReveal className="engagement-grid" delay="0.1s" id="engagements">
-                            {[
-                                ["Executive Strategy Session", "A focused working session on a strategic decision affecting technology investment or transformation direction."],
-                                ["Strategic Technology Review", "Independent assessment of whether current technology capability supports business strategy and efficiency targets."],
-                                ["Digital Transformation Advisory", "Roadmap and governance design for enterprise transformation - from direction through organizational readiness."],
-                                ["AI Readiness Assessment", "Honest evaluation of use cases, organizational readiness, risk, and return potential before AI investment scales."],
-                                ["Enterprise Capability Review", "Assessment of scalability constraints, integration complexity, and their impact on business agility."],
-                                ["Technology Leadership Advisory", "Support for CTOs and technology executives on governance, investment priorities, and organizational design."],
-                            ].map(([title, text]) => (
-                                <article key={title} className="engagement-item">
-                                    <h3>{title}</h3>
-                                    <p>{text}</p>
-                                </article>
-                            ))}
                         </ScrollReveal>
                     </div>
                 </section>
@@ -298,10 +329,11 @@ export default function HomePage() {
                         <ScrollReveal className="section-header">
                             <span className="section-label">Insights</span>
                             <h2 className="section-title" id="insights-heading">
-                                Perspectives on strategy, AI, and transformation.
+                                How I think - selected notes
                             </h2>
                             <p className="section-intro">
-                                Analysis for executives navigating complex technology decisions. <Link href="/insights">View insights archive</Link>.
+                                Direct analysis of systems constraints, AI and human work, architecture, and
+                                build/buy/integrate choices - not a general technology blog.
                             </p>
                         </ScrollReveal>
                         <ScrollReveal className="insight-list" delay="0.1s">
@@ -311,8 +343,17 @@ export default function HomePage() {
                                         Why AI strategy must begin with business architecture
                                     </Link>
                                 </h3>
-                                <span>Technology Strategy</span>
+                                <span>AI + Human Systems</span>
                             </article>
+                        </ScrollReveal>
+                        <ScrollReveal className="funnel-cta-bar" delay="0.15s">
+                            <div>
+                                <h3>More analysis</h3>
+                                <p>Technology Decision Briefs and notes on complex systems problems.</p>
+                            </div>
+                            <Link className="btn btn-primary" href="/insights">
+                                View Insights
+                            </Link>
                         </ScrollReveal>
                     </div>
                 </section>
@@ -320,17 +361,22 @@ export default function HomePage() {
                 <section className="section section-alt" id="consultation" aria-labelledby="consultation-heading">
                     <div className="shell">
                         <ScrollReveal className="section-header">
-                            <span className="section-label">Start a conversation</span>
+                            <span className="section-label">Contact</span>
                             <h2 className="section-title" id="consultation-heading">
-                                Request a confidential executive consultation.
+                                Discuss a complex technology problem
                             </h2>
                             <p className="section-intro">
-                                For founders, CEOs, board members, investors, and enterprise leaders. Share the business challenge and decision context. I respond within 48 hours.
+                                If your organization is facing a difficult technology, AI, architecture, process, or systems
+                                problem, share the context. The first step is understanding the objective and the system
+                                behind the problem. I respond within 48 hours.
                             </p>
                         </ScrollReveal>
                         <div className="contact-grid">
                             <ScrollReveal className="contact-aside">
-                                <p>Engagements focus on strategic advisory - technology direction, transformation, AI enablement, and executive decision support.</p>
+                                <p>
+                                    For founders and senior business or technology leaders responsible for complex systems,
+                                    technology, AI, or process decisions.
+                                </p>
                                 <div className="contact-links">
                                     <div className="contact-link">
                                         <span>Email</span>
@@ -347,7 +393,7 @@ export default function HomePage() {
                                         </a>
                                     </div>
                                     <div className="contact-link">
-                                        <span>Book an appointment</span>
+                                        <span>Schedule</span>
                                         <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
                                             topmate.io/pasindu_bandarigoda
                                         </a>
@@ -366,28 +412,41 @@ export default function HomePage() {
                         <ScrollReveal className="section-header">
                             <span className="section-label">Questions</span>
                             <h2 className="section-title" id="faq-heading">
-                                What executives ask before engaging.
+                                Common questions
                             </h2>
                         </ScrollReveal>
                         <div className="faq-list">
                             {[
-                                ["Who do you advise?", "Founders, CEOs, board members, investors, CIOs, and enterprise leaders facing decisions where technology affects business performance, risk, or long-term value."],
-                                ["What is your primary role?", "Technology Strategy Advisor. I also conduct computational neuroscience research that strengthens advisory on AI, customer experience, and organizational decisions - alongside founder leadership, university teaching, and enterprise technology practice."],
-                                ["What does an engagement produce?", "Clarity for executive decision-making - strategic direction, independent assessment, and actionable recommendations tied to business outcomes."],
+                                [
+                                    "What kinds of problems do you work on?",
+                                    "Problems where business processes, people, decisions, information, software, data, AI, and architecture interact - particularly when the right technical direction is not immediately obvious.",
+                                ],
+                                [
+                                    "Who do you work with?",
+                                    "Founders and senior business or technology leaders responsible for complex systems, technology, AI, or process decisions.",
+                                ],
+                                [
+                                    "Do you provide implementation?",
+                                    "Primary focus is problem definition, systems analysis, technology direction, and decision support. Implementation can follow once the direction is clear. If an affiliated company could participate in delivery, that relationship is disclosed.",
+                                ],
+                                [
+                                    "What does an engagement produce?",
+                                    "A clearer view of the business objective, the system behind the problem, the main constraints, options, trade-offs, and a practical technology-enabled direction.",
+                                ],
                             ].map(([q, a], i) => (
                                 <ScrollReveal key={q} className="faq-item" delay={`${i * 0.05}s`}>
                                     <h3>{q}</h3>
                                     <p>{a}</p>
                                 </ScrollReveal>
                             ))}
-                            <ScrollReveal className="faq-item" delay="0.15s">
+                            <ScrollReveal className="faq-item" delay="0.2s">
                                 <h3>How do we begin?</h3>
                                 <p>
-                                    Submit the <Link href="#consultation">consultation request</Link>, email directly, or{" "}
+                                    Share the <Link href="#consultation">problem context</Link>, email directly, or{" "}
                                     <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                                        book an appointment
-                                    </a>{" "}
-                                    via Topmate.
+                                        schedule a conversation
+                                    </a>
+                                    .
                                 </p>
                             </ScrollReveal>
                         </div>

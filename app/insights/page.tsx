@@ -2,17 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { insightPillars } from "@/lib/advisory-content";
 import { SITE_URL, TOPMATE_URL } from "@/lib/site";
 import "@/styles/article.css";
 
 export const metadata: Metadata = {
-    title: "Insights | Pasindu Bandarigoda - Technology Strategy & Executive Advisory",
+    title: "Insights | Complex Systems & Technology Decisions",
     description:
-        "Executive perspectives by Pasindu Bandarigoda on technology strategy, AI enablement, digital transformation, and business decision-making.",
+        "How Pasindu Bandarigoda thinks about complex systems, technology decisions, AI and human work, architecture, and build/buy/integrate choices.",
     alternates: { canonical: `${SITE_URL}/insights` },
+    openGraph: {
+        title: "Insights | Pasindu Bandarigoda",
+        description:
+            "Business outcomes first. Technology in service of strategy - notes on complex systems and technology decisions.",
+        url: `${SITE_URL}/insights`,
+    },
 };
 
 export default function InsightsPage() {
+    const published = insightPillars.flatMap((pillar) =>
+        pillar.articles.filter((a) => a.status === "published" && a.href).map((a) => ({ ...a, pillar: pillar.title })),
+    );
+
     return (
         <>
             <a className="skip-link" href="#main-content">
@@ -25,60 +36,102 @@ export default function InsightsPage() {
                     <header className="article-header">
                         <p className="article-meta">
                             <span>Insights</span>
-                            <span>Pasindu Bandarigoda</span>
+                            <span aria-hidden="true">·</span>
+                            <span>How I think</span>
                         </p>
-                        <h1 className="article-title">Perspectives on business challenges at the intersection of strategy and technology.</h1>
+                        <h1 className="article-title">How I think about complex systems and technology decisions.</h1>
                         <p className="article-deck">
-                            Analysis for executives navigating technology investment, AI enablement, and enterprise transformation.
+                            Start with the business outcome. Understand the system. Identify the constraint. Then define the
+                            technology direction. Not a general technology blog.
                         </p>
                     </header>
 
+                    {published.length > 0 && (
+                        <section className="insights-featured" aria-labelledby="featured-heading">
+                            <h2 id="featured-heading" className="insights-section-title">
+                                Published
+                            </h2>
+                            <ul className="insights-featured-list">
+                                {published.map((article) => (
+                                    <li key={article.href}>
+                                        <Link href={article.href!}>{article.title}</Link>
+                                        <span>{article.pillar}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
+
+                    <section className="insights-brief" aria-labelledby="brief-heading">
+                        <h2 id="brief-heading" className="insights-section-title">
+                            Technology Decision Brief
+                        </h2>
+                        <p>
+                            Each brief examines one bounded problem: the decision, why the obvious answer may be wrong, system
+                            context, constraints, options, trade-offs, questions worth asking, and a decision principle. No
+                            universal prescriptions.
+                        </p>
+                    </section>
+
                     <div className="insights-hub-grid">
-                        <section className="insights-category" id="technology-strategy">
-                            <h2>Technology Strategy</h2>
-                            <ul>
-                                <li>
-                                    <Link href="/insights/technology-strategy/ai-strategy-business-architecture">
-                                        Why AI strategy must begin with business architecture
-                                    </Link>
-                                </li>
-                            </ul>
-                        </section>
-                        <section className="insights-category" id="ai">
-                            <h2>AI Enablement</h2>
-                            <ul>
-                                <li>
-                                    <Link href="/insights/technology-strategy/ai-strategy-business-architecture">
-                                        AI strategy and business architecture
-                                    </Link>
-                                </li>
-                            </ul>
-                        </section>
-                        <section className="insights-category" id="digital-transformation">
-                            <h2>Digital Transformation</h2>
-                            <ul>
-                                <li>
-                                    <em>Further analysis in preparation.</em>
-                                </li>
-                            </ul>
-                        </section>
-                        <section className="insights-category" id="leadership">
-                            <h2>Executive Decision-Making</h2>
-                            <ul>
-                                <li>
-                                    <em>Further analysis in preparation.</em>
-                                </li>
-                            </ul>
-                        </section>
+                        {insightPillars.map((pillar) => {
+                            const hasPublished = pillar.articles.some((a) => a.status === "published");
+                            const planned = pillar.articles.filter((a) => a.status === "planned");
+
+                            return (
+                                <section key={pillar.id} className="insights-category" id={pillar.id}>
+                                    <h2>{pillar.title}</h2>
+                                    <p className="insights-category-desc">{pillar.description}</p>
+                                    <ul>
+                                        {pillar.articles
+                                            .filter((a) => a.status === "published" && a.href)
+                                            .map((article) => (
+                                                <li key={article.href}>
+                                                    <Link href={article.href!}>{article.title}</Link>
+                                                </li>
+                                            ))}
+                                        {!hasPublished &&
+                                            planned.slice(0, 2).map((article) => (
+                                                <li key={article.title} className="insights-planned">
+                                                    <span>{article.title}</span>
+                                                    {article.brief && <em>Decision Brief · planned</em>}
+                                                </li>
+                                            ))}
+                                        {hasPublished &&
+                                            planned.slice(0, 1).map((article) => (
+                                                <li key={article.title} className="insights-planned">
+                                                    <span>{article.title}</span>
+                                                    {article.brief && <em>Decision Brief · planned</em>}
+                                                </li>
+                                            ))}
+                                    </ul>
+                                </section>
+                            );
+                        })}
                     </div>
 
-                    <p style={{ marginTop: "3rem" }}>
-                        <Link href="/#consultation">Request a consultation</Link> ·{" "}
-                        <a href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
-                            Book an appointment
-                        </a>{" "}
-                        · <Link href="/">Return home</Link>
-                    </p>
+                    <aside className="insights-cta">
+                        <h2>Discuss a complex technology problem</h2>
+                        <p>
+                            Share the technology, AI, architecture, process, or systems problem you are evaluating. The first
+                            step is understanding the objective and the system behind the problem.
+                        </p>
+                        <div className="insights-cta-actions">
+                            <a className="btn btn-primary" href={TOPMATE_URL} target="_blank" rel="noopener noreferrer">
+                                Discuss a Problem
+                            </a>
+                            <Link className="btn btn-outline" href="/#consultation">
+                                Request an Independent Review
+                            </Link>
+                        </div>
+                        <p className="insights-cta-links">
+                            <Link href="/portfolio">Track Record</Link>
+                            {" · "}
+                            <Link href="/#problems">Problems</Link>
+                            {" · "}
+                            <Link href="/">Home</Link>
+                        </p>
+                    </aside>
                 </div>
             </main>
 
