@@ -259,7 +259,6 @@ a {
 }
 
 .section-header {
-    max-width: 42rem;
     margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 

@@ -468,6 +468,11 @@ export const academicExperience: PortfolioRole[] = [
 
 export const selectedInsights = [
     {
+        title: "Is technology actually the problem?",
+        href: "/insights/technology-strategy/is-technology-actually-the-problem",
+        category: "Complex Systems & Technology Decisions",
+    },
+    {
         title: "Why AI strategy must begin with business architecture",
         href: "/insights/technology-strategy/ai-strategy-business-architecture",
         category: "AI + Human Systems",

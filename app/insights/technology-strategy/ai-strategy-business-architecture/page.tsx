@@ -199,6 +199,9 @@ export default function ArticlePage() {
                             <section className="related-articles" aria-labelledby="related-heading">
                                 <h2 id="related-heading">Related</h2>
                                 <div className="related-list">
+                                    <Link href="/insights/technology-strategy/is-technology-actually-the-problem">
+                                        Is technology actually the problem? <span>Decision Brief</span>
+                                    </Link>
                                     <Link href="/insights">
                                         Insights <span>All notes</span>
                                     </Link>

@@ -339,6 +339,14 @@ export default function HomePage() {
                         <ScrollReveal className="insight-list" delay="0.1s">
                             <article className="insight-item">
                                 <h3>
+                                    <Link href="/insights/technology-strategy/is-technology-actually-the-problem">
+                                        Is technology actually the problem?
+                                    </Link>
+                                </h3>
+                                <span>Complex Systems</span>
+                            </article>
+                            <article className="insight-item">
+                                <h3>
                                     <Link href="/insights/technology-strategy/ai-strategy-business-architecture">
                                         Why AI strategy must begin with business architecture
                                     </Link>

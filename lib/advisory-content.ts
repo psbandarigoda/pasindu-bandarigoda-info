@@ -200,7 +200,12 @@ export const insightPillars: InsightPillar[] = [
         title: "Complex Systems & Technology Decisions",
         description: "Finding the real constraint before choosing a technology path.",
         articles: [
-            { title: "Is technology actually the problem?", status: "planned", brief: true },
+            {
+                title: "Is technology actually the problem?",
+                href: "/insights/technology-strategy/is-technology-actually-the-problem",
+                status: "published",
+                brief: true,
+            },
             { title: "Why a broken process should not be automated", status: "planned", brief: true },
             {
                 title: "When technical debt becomes a business constraint",

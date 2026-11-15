@@ -5,7 +5,6 @@
 }
 
 .article-header {
-    max-width: 42rem;
     margin-bottom: 2.5rem;
 }
 
@@ -315,7 +314,6 @@
 
 .insights-brief p {
     margin: 0;
-    max-width: 46rem;
     color: var(--text-muted);
     line-height: 1.65;
 }

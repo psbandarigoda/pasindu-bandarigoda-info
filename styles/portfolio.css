@@ -6,7 +6,6 @@
 }
 
 .portfolio-hero {
-    max-width: 42rem;
     margin-bottom: 4rem;
 }
 
@@ -114,7 +113,6 @@
 
 .portfolio-section-header p {
     margin: 0;
-    max-width: 40rem;
     color: var(--text-muted);
     line-height: 1.6;
 }
@@ -268,7 +266,6 @@
 
 .portfolio-research-topics-intro {
     margin: 0 0 1.25rem;
-    max-width: 40rem;
     font-size: 0.9375rem;
     line-height: 1.6;
     color: var(--text-muted);
