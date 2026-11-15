@@ -17,12 +17,12 @@ import { LINKEDIN_URL, OWNER_EMAIL, PROFILE_IMAGE, SITE_URL, TOPMATE_URL } from 
 export const metadata: Metadata = {
     title: "Pasindu Bandarigoda - Technology Strategy Advisor",
     description:
-        "Technology Strategy Advisor for complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
+        "Technology Strategy Advisor helping leaders to solve complex problems with technology as a good investment. Business outcomes first.",
     alternates: { canonical: SITE_URL },
     openGraph: {
         title: "Pasindu Bandarigoda - Technology Strategy Advisor",
         description:
-            "Improve complex technology decisions by understanding the business objective and the system behind the problem before defining the solution.",
+            "I help leaders to solve complex problems with technology as a good investment, starting with the business outcome and the system behind the problem.",
         url: SITE_URL,
     },
 };
@@ -44,12 +44,12 @@ export default function HomePage() {
                                 Complex Systems · Technology-Enabled Problem Solving
                             </p>
                             <h1 className="hero-title" id="hero-heading">
-                                I help leaders solve complex technology and systems problems.
+                                I help leaders to solve complex problems with technology as a good investment.
                             </h1>
                             <p className="hero-lead">
-                                I work across business processes, people, software, data, AI, and architecture to understand
-                                what is driving the problem and define the technology direction that best supports the
-                                business objective.
+                                I work across business processes, people, software, data, AI, and architecture to find what
+                                is really driving the problem, so the technology you invest in supports the outcome you
+                                need.
                             </p>
                             <p className="hero-audience">
                                 Founders · CEOs · CIOs · CTOs · COOs · Leadership Teams

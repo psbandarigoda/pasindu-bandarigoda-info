@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         template: "%s | Pasindu Bandarigoda",
     },
     description:
-        "Technology Strategy Advisor for complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
+        "Technology Strategy Advisor helping leaders solve complex problems with technology as a good investment. Business outcomes first.",
     authors: [{ name: "Pasindu Bandarigoda" }],
     openGraph: {
         siteName: "Pasindu Bandarigoda",
@@ -61,7 +61,7 @@ const jsonLd = {
             name: "Pasindu Bandarigoda",
             jobTitle: "Technology Strategy Advisor",
             description:
-                "Technology Strategy Advisor - complex systems and technology-enabled problem solving. Business outcomes first. Technology in service of strategy.",
+                "Technology Strategy Advisor helping leaders solve complex problems with technology as a good investment. Business outcomes first. Technology in service of strategy.",
             url: SITE_URL,
             email: OWNER_EMAIL,
             telephone: "+94773638063",
